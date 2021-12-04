@@ -1,6 +1,13 @@
 
 const routes = [
   {
+    path: '/category',
+    component: () => import('layouts/CategoryLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Categories.vue') }
+    ]
+  },
+  {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
