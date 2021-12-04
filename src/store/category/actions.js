@@ -7,6 +7,10 @@ export function fetchCategories (context) {
         {
             title: 'Electrical',
             img: 'https://placeimg.com/500/300/nature'
+        },
+        {
+            title: 'Electrical',
+            img: 'https://placeimg.com/500/300/nature'
         }
     ]
     context.commit('setCategories', categories)

@@ -1,15 +1,14 @@
 <template>
-  <div class="col-6 q-pa-sm justify-center">
+  <div class="q-pa-sm justify-center">
     <q-card bordered square>
       <div class="q-pa-sm self-center text-center">
         <q-card-section>
           <div class="text-h5">{{ title }}</div>
         </q-card-section>
         <q-card-section>
-          <div class="col-4">
+          <div>
             <q-img
               :src="img"
-              :ratio="16 / 9"
               fit="fill"
             />
           </div>
