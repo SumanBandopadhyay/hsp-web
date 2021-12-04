@@ -1,25 +1,36 @@
 <template>
   <q-page padding>
-    <div class="q-col-gutter-md row items-start">
-      <category-type-card-component :category="category"/>
+    <div v-for="category in categories" :key="category">
+      <div class="q-col-gutter-md row items-start">
+        <category-type-card-component :category="category" />
+      </div>
     </div>
   </q-page>
 </template>
 
 <script>
-import CategoryTypeCardComponent from 'src/components/CategoryTypeCardComponent.vue'
+import { onMounted, computed } from "vue";
+import { useStore } from "vuex";
+import CategoryTypeCardComponent from "src/components/CategoryTypeCardComponent.vue";
 export default {
   components: { CategoryTypeCardComponent },
-  name: 'Categories',
+  name: "Categories",
   setup() {
-    const category = {
-      title: 'Plumbing',
-      img: 'https://placeimg.com/500/300/nature'
+    const $store = useStore();
+
+    const fetchCategories = async () => {
+      await $store.dispatch("category/fetchCategories")
     }
+
+    onMounted(fetchCategories);
+
+    const categories = computed(() => {
+      return $store.state.category.categories
+    })
+
     return {
-      category
-    }
+      categories: categories,
+    };
   },
-  
-}
+};
 </script>
